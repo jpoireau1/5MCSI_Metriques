@@ -39,7 +39,7 @@ def mongraphique2887393():
 def mongraphique2():
     return render_template("nbCommits.html")
 
-@app.route('/commitsTest/')
+@app.route('/commitAPI/')
 def commits():
     response = urlopen('https://api.github.com/repos/jpoireau1/5MCSI_Metriques/commits')
     raw_content = response.read()
