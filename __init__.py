@@ -39,6 +39,19 @@ def mongraphique2887393():
 def mongraphique2():
     return render_template("nbCommits.html")
 
+@app.route('/commitsTest/')
+def commits():
+    response = urlopen('https://api.github.com/repos/jpoireau1/5MCSI_Metriques/commits')
+    raw_content = response.read()
+    json_content = json.loads(raw_content.decode('utf-8'))
+    results = []
+    for list_element in json_content.get('commit', []):
+        # dt_value = list_element.get('dt')
+        dateCommit = list_element.get('author', {}).get('date') - 273.15 # Conversion de Kelvin en °c 
+        # results.append({'Jour': dt_value, 'date': dateCommit})
+        results.append({'date': dateCommit})
+    return jsonify(results=results)
+
 @app.route('/paris2/')
 def meteo2():
     response = urlopen('https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx')
