@@ -32,7 +32,7 @@ def mongraphique():
     return render_template("graphique.html")
 
 @app.route("/histogramme/")
-def mongraphique2():
+def mongraphique2887393():
     return render_template("graphique2.html")
 
 @app.route("/commits/")
