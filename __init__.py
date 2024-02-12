@@ -45,11 +45,11 @@ def commits():
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
-    for list_element in json_content.get('commit', []):
-        dt_value = list_element.get('sha')
-        dateCommit = list_element.get('author', {}).get('date') - 273.15 # Conversion de Kelvin en °c 
-        results.append({'Jour': dt_value, 'date': dateCommit})
-        # results.append({'date': dateCommit})
+    for commit in json_content:
+        sha = commit.get('sha')
+        author = commit.get('commit', {}).get('author', {})
+        date_commit = author.get('date')
+        results.append({'sha': sha, 'date': date_commit})
     return jsonify(results=results)
 
 @app.route('/paris2/')
