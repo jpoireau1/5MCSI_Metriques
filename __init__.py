@@ -52,7 +52,7 @@ def meteo():
     return jsonify(results=results)
 
 @app.route("/newRapport/")
-def mongraphique2():
+def mongraphique222():
     return render_template("graphiqueNewAPI.html")
   
 if __name__ == "__main__":
