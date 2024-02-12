@@ -38,6 +38,18 @@ def mongraphique2():
 @app.route("/commits/")
 def mongraphique2():
     return render_template("nbCommits.html")
+
+@app.route('/paris2/')
+def meteo():
+    response = urlopen('https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx')
+    raw_content = response.read()
+    json_content = json.loads(raw_content.decode('utf-8'))
+    results = []
+    for list_element in json_content.get('list', []):
+        dt_value = list_element.get('temp')
+        temp_day_value = list_element.get('main', {}).get('day') - 273.15 # Conversion de Kelvin en °c 
+        results.append({'Jour': dt_value, 'temp': temp_day_value})
+    return jsonify(results=results)
   
 if __name__ == "__main__":
   app.run(debug=True)
