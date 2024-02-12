@@ -45,7 +45,7 @@ def commits():
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
-    for list_element in json_content.get('commit', []):
+    for list_element in json_content.get('Commit', []):
         # dt_value = list_element.get('dt')
         dateCommit = list_element.get('author', {}).get('date') - 273.15 # Conversion de Kelvin en °c 
         # results.append({'Jour': dt_value, 'date': dateCommit})
