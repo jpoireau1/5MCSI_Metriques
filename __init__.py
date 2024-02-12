@@ -66,6 +66,7 @@ def meteo2():
         # results.append({'temp': temp_day_value})
     return jsonify(results=results)
 
+# chemin vers exercice 3 envoyé par mail pour remplacer l'API météo qui fontionne plus
 @app.route("/newRapport/")
 def mongraphique222():
     return render_template("graphiqueNewAPI.html")
