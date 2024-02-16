@@ -46,8 +46,7 @@ def commits():
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
     for commit in json_content:
-        # sha = commit.get('sha')
-        author = commit.get('commit', {}).get('author', {})
+        author = commit.get('commit', {}).get('author', {}) # sha = commit.get('sha')
         date_commit = author.get('date')
         # results.append({'sha': sha, 'date': date_commit})
         results.append({'date': date_commit})
